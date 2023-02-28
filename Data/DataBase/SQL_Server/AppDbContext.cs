@@ -14,21 +14,8 @@ namespace Data.DataBase.SQL_Server
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Order> Orders { get; set; }
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-
-            IConfiguration config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            string? connectionString = config.GetConnectionString("ConnectionString");
-
-            optionsBuilder
-                .UseSqlServer(connectionString);
-        }
+        //метод который, вызывается при добавлении заказа в таблицу заказов,
+        //который обновляет свойство OrderAmount для записей в таблице Clients
 
         public void Seed()
         {
@@ -70,5 +57,44 @@ namespace Data.DataBase.SQL_Server
 
             SaveChanges();
         }
+
+        public void UpdateOrderAmountsForClients()
+        {
+            foreach (Client client in Clients)
+            {
+                client.OrderAmount = CountOrders(client.ID);
+            }
+
+            SaveChanges();
+        }
+        private uint CountOrders(uint clientId)
+        {
+            List<Order> list = new List<Order>();
+
+            if (Orders != null || Clients != null)
+            {
+                list = Orders.Where(x => x.ClientID == clientId).ToList();
+            }
+            uint count = (uint)list.Count();
+
+            return count;
+        }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            IConfiguration config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string? connectionString = config.GetConnectionString("ConnectionString");
+
+            optionsBuilder
+                .UseSqlServer(connectionString);
+        }
+
+        
     }
 }
