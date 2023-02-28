@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Data.DataBase.SQL_Server
 {
@@ -27,6 +28,50 @@ namespace Data.DataBase.SQL_Server
 
             optionsBuilder
                 .UseSqlServer(connectionString);
+        }
+
+        public void Seed()
+        {
+            if (Clients.Any() || Orders.Any())
+                return;
+
+            Client client = new Client()
+            {
+                ID = 999,
+                FirstName = "Nikola",
+                SecondName = "Tesla",
+                PhoneNumber = "+996703703500",
+                OrderAmount = 2,
+                DateAdd = DateTime.Now,
+            };
+
+            Clients.Add(client);
+
+
+            Order order = new Order()
+            {
+                ClientID = client.ID,
+                OrderDate = DateTime.Today,
+                CloseDate = DateTime.Now,
+                Price = 500,
+                Description = "Печень"
+            };
+
+            Orders.Add(order);
+
+            order = new Order()
+            {
+                ClientID = client.ID,
+                OrderDate = DateTime.Today,
+                CloseDate = DateTime.Now,
+                Price = 200,
+                Description = "Шаверма"
+            };
+
+            Orders.Add(order);
+
+
+            SaveChanges();
         }
     }
 }
