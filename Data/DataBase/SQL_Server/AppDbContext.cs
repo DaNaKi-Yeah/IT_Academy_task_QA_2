@@ -37,7 +37,6 @@ namespace Data.DataBase.SQL_Server
 
             Client client = new Client()
             {
-                ID = 999,
                 FirstName = "Nikola",
                 SecondName = "Tesla",
                 PhoneNumber = "+996703703500",
@@ -50,7 +49,6 @@ namespace Data.DataBase.SQL_Server
 
             Order order = new Order()
             {
-                ClientID = client.ID,
                 OrderDate = DateTime.Today,
                 CloseDate = DateTime.Now,
                 Price = 500,
@@ -61,7 +59,6 @@ namespace Data.DataBase.SQL_Server
 
             order = new Order()
             {
-                ClientID = client.ID,
                 OrderDate = DateTime.Today,
                 CloseDate = DateTime.Now,
                 Price = 200,
