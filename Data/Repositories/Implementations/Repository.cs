@@ -15,6 +15,10 @@ namespace Data.Repositories.Implementations
         protected readonly AppDbContext _context;
 
 
+        public Repository( )
+        {
+            _context = new AppDbContext();
+        }
         public Repository(AppDbContext context)
         {
             _context = context;
