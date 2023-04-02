@@ -14,6 +14,6 @@ namespace Recorder.DAL.Entities.Models
         public string SecondName { get; set; }
         public string PhoneNumber { get; set; }
         public virtual IEnumerable<Order> Orders{ get; set; }
-        public int OrderAmount => Orders.Count();
+        public int OrderAmount => Orders is null ? 0 : Orders.Count();
     }
 }
