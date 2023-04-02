@@ -8,7 +8,7 @@ namespace Recorder.DAL.Repositories.Interfaces
 {
     public interface IRepository<T>
     {
-        public int Add(T entity);
+        public T Add(T entity);
         public void AddRange(IEnumerable<T> entities);
         public T GetById(int id);
         public IEnumerable<T> GetAll();

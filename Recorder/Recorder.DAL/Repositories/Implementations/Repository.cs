@@ -14,19 +14,21 @@ namespace Recorder.DAL.Repositories.Implementations
     {
         private readonly AppDbContext _appDbContext;
         private readonly DbSet<T> _dbSet;
-        
+
         public Repository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
             _dbSet = appDbContext.Set<T>();
         }
 
-        public int Add(T entity)
+        public T Add(T entity)
         {
-            int id = _dbSet.Add(entity).Entity.ID;
+            var addedEntity = _dbSet.Add(entity).Entity;
+            int id = addedEntity.ID;
+
             _appDbContext.SaveChanges();
 
-            return id;
+            return addedEntity;
         }
 
         public void AddRange(IEnumerable<T> entities)
@@ -48,11 +50,13 @@ namespace Recorder.DAL.Repositories.Implementations
         public void Remove(T entity)
         {
             _dbSet.Remove(entity);
+            _appDbContext.SaveChanges();
         }
 
         public void Update(T entity)
         {
             _dbSet.Update(entity);
+            _appDbContext.SaveChanges();
         }
     }
 }
