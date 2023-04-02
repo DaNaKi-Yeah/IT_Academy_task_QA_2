@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Recorder.BLL\Recorder.BLL.csproj" />
+    <ProjectReference Include="..\Recorder.DAL\Recorder.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
