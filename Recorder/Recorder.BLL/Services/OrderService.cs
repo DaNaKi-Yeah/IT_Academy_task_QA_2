@@ -46,5 +46,10 @@ namespace Recorder.BLL.Services
         {
             _orderRepository.Remove(order);
         }
+
+        public void RemoveById(int id)
+        {
+            _orderRepository.RemoveById(id);
+        }
     }
 }

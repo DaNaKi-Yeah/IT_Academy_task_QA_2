@@ -14,5 +14,6 @@ namespace Recorder.DAL.Repositories.Interfaces
         public IEnumerable<T> GetAll();
         public void Update(T entity);
         public void Remove(T entity);
+        public void RemoveById(int id);
     }
 }

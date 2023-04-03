@@ -53,6 +53,18 @@ namespace Recorder.DAL.Repositories.Implementations
             _appDbContext.SaveChanges();
         }
 
+        public void RemoveById(int id)
+        {
+            bool isHaveClientWithThisId = _dbSet.Any(c => c.ID == id);
+
+            if (isHaveClientWithThisId)
+            {
+                T entity = _dbSet.FirstOrDefault(e => e.ID == id);
+                _dbSet.Remove(entity);
+                _appDbContext.SaveChanges();
+            }
+        }
+
         public void Update(T entity)
         {
             _dbSet.Update(entity);
