@@ -9,5 +9,6 @@ namespace Recorder.PL.ViewControllers.Interfaces
 {
     public interface IOrderViewController : IViewController<Order>
     {
+        public void DisplayAll(IEnumerable<Order> orders);
     }
 }
