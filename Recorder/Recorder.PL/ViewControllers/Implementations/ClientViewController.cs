@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Design;
 using Recorder.BLL.Services;
 using Recorder.DAL.Entities.Models;
+using Recorder.PL.ViewControllers.Helpers;
 using Recorder.PL.ViewControllers.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace Recorder.PL.ViewControllers.Implementations
         }
         public void DisplayOne(Client client)
         {
+            Console.WriteLine("Client");
             Console.WriteLine($"Id: {client.ID}");
             Console.WriteLine($"Date add: {client.DateAdd}");
             Console.WriteLine($"First name: {client.FirstName}");
@@ -85,7 +87,7 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             Console.WriteLine("\nEditing Client by id\n");
 
-            int clientId = GetIdGivenCurrentClients();
+            int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
 
             Client client = _clientService.GetById(clientId);
 
@@ -137,43 +139,10 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             Console.WriteLine("\nRemoving Client by id\n");
 
-            int clientId = GetIdGivenCurrentClients();
+            int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
 
             _clientService.RemoveById(clientId);
         }
-        private int GetIdGivenCurrentClients()
-        {
-            var clients = _clientService.GetAll();
-
-            string idStr;
-            int id = -1;
-            while (true)
-            {
-                Console.Write("Enter client Id: ");
-                idStr = Console.ReadLine();
-
-                bool isInteger = int.TryParse(idStr, out id);
-
-                if (isInteger)
-                {
-                    bool isHaveClientById = clients.Any(c => c.ID == id);
-
-                    if (isHaveClientById)
-                    {
-                        break;
-                    }
-                    else if(!isHaveClientById)
-                    {
-                        Console.WriteLine($"### Incorrect id. ### No have Client with this Id \"{idStr}\".");
-                    }
-                }
-                else if(!isInteger)
-                {
-                    Console.WriteLine($"### Incorrect id. ### \"{idStr}\" is not number.");
-                }
-            }
-
-            return id;
-        }
+       
     }
 }
