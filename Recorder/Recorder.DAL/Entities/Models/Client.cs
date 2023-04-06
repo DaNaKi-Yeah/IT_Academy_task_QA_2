@@ -9,15 +9,13 @@ namespace Recorder.DAL.Entities.Models
 {
     public class Client : BaseEntity
     {
-        public Client()
-        {
-
-        }
-        public Client(string firstName, string secondName, string phoneNumber)
+        public Client() { }
+        public Client(string firstName, string secondName, string phoneNumber, DateTime dateAdd)
         {
             FirstName = firstName;
             SecondName = secondName;
             PhoneNumber = phoneNumber;
+            DateAdd = dateAdd;
         }
 
         public DateTime DateAdd { get; set; }
