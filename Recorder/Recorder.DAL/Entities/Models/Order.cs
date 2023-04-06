@@ -9,6 +9,16 @@ namespace Recorder.DAL.Entities.Models
 {
     public class Order : BaseEntity
     {
+        public Order() { }
+        public Order(int clientID, double price, string description, DateTime orderDate, DateTime closeDate)
+        {
+            ClientID = clientID;
+            Price = price;
+            Description = description;
+            OrderDate = orderDate;
+            CloseDate = closeDate;
+        }
+
         public int ClientID { get; set; }
         public virtual Client Client { get; set; }
         public DateTime OrderDate { get; set; }
