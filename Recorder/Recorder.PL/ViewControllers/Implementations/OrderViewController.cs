@@ -52,6 +52,8 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void Add(int clientId)
         {
+            DisplayAll();
+
             DateTime dateTimeNow = DateTime.Now;
             DateTime dateTimeAfterDaysFromNow;
             string description;

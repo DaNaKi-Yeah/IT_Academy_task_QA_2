@@ -66,6 +66,8 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void Add()
         {
+            DisplayAll();
+
             DateTime dateTimeNow = DateTime.Now;
             string firstName, secondName, phoneNumber;
 
