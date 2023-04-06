@@ -38,6 +38,7 @@ namespace Recorder.PL.ViewControllers.Implementations
                 Console.WriteLine("----------------------");
             }
         }
+
         public void DisplayOne(Client client)
         {
             Console.WriteLine("Client");
@@ -62,6 +63,7 @@ namespace Recorder.PL.ViewControllers.Implementations
                 _displayOrders.Invoke(orders);
             }
         }
+
         public void Add()
         {
             DateTime dateTimeNow = DateTime.Now;
@@ -81,6 +83,7 @@ namespace Recorder.PL.ViewControllers.Implementations
 
             _clientService.Add(newClient);
         }
+
         public void EditById()
         {
             DisplayAll();
@@ -136,6 +139,7 @@ namespace Recorder.PL.ViewControllers.Implementations
             }
             _clientService.Update(client);
         }
+
         public void RemoveById()
         {
             DisplayAll();

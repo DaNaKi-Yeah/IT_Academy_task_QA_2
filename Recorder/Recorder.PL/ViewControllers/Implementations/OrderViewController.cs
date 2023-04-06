@@ -139,6 +139,7 @@ namespace Recorder.PL.ViewControllers.Implementations
             _orderService.RemoveById(orderId);
         }
 
+
         private double GetCorrectPrice()
         {
             while (true)
@@ -160,6 +161,7 @@ namespace Recorder.PL.ViewControllers.Implementations
             }
 
         }
+
         private DateTime GetCloseDate(DateTime orderDate)
         {
             while (true)
