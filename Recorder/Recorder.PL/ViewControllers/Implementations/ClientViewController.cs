@@ -92,8 +92,9 @@ namespace Recorder.PL.ViewControllers.Implementations
             int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
 
             Client client = _clientService.GetById(clientId);
+            DisplayOne(client);
 
-
+            Console.WriteLine();
             Console.WriteLine("Edit property:");
             Console.WriteLine("1. First name");
             Console.WriteLine("2. Second name");
