@@ -49,8 +49,6 @@ namespace Recorder.PL.ViewControllers.Implementations
             Console.WriteLine($"Order amount: {client.OrderAmount}");
         }
 
-        //TODO: make OrderViewController.DisplayAll(orders) and do DI in ctor to displayOrders
-        //### dind't test ###
         public void ShowClientOrders(Client client)
         {
             var orders = client.Orders;
