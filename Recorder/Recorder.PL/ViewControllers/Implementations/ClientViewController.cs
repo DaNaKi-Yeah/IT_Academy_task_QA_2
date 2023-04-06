@@ -30,7 +30,7 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             var clients = _clientService.GetAll();
 
-            Console.WriteLine("\nClients:\n");
+            Console.WriteLine("\n----- Clients: -----\n");
 
             foreach (Client client in clients)
             {
@@ -79,12 +79,14 @@ namespace Recorder.PL.ViewControllers.Implementations
             phoneNumber = Console.ReadLine();
 
 
-            Client newClient = new Client(firstName, secondName, phoneNumber) { DateAdd = DateTime.Now };
+            Client newClient = new Client(firstName, secondName, phoneNumber, dateTimeNow) ;
 
             _clientService.Add(newClient);
         }
         public void EditById()
         {
+            DisplayAll();
+
             Console.WriteLine("\nEditing Client by id\n");
 
             int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
@@ -137,6 +139,8 @@ namespace Recorder.PL.ViewControllers.Implementations
         }
         public void RemoveById()
         {
+            DisplayAll();
+
             Console.WriteLine("\nRemoving Client by id\n");
 
             int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
