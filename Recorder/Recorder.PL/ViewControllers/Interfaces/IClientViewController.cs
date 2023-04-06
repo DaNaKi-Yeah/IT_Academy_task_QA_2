@@ -10,5 +10,6 @@ namespace Recorder.PL.ViewControllers.Interfaces
     public interface IClientViewController : IViewController<Client>
     {
         public void ShowClientOrders(Client client);
+        public void Add();
     }
 }

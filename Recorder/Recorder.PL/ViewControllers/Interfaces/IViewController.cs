@@ -10,7 +10,6 @@ namespace Recorder.PL.ViewControllers.Interfaces
     {
         public void DisplayAll();
         public void DisplayOne(T item);
-        public void Add();
         public void EditById();
         public void RemoveById();
     }
