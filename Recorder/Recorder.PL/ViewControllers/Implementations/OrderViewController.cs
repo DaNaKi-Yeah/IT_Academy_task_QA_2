@@ -13,7 +13,7 @@ namespace Recorder.PL.ViewControllers.Implementations
 {
     public class OrderViewController : IOrderViewController
     {
-        public readonly OrderService _orderService;
+        private readonly OrderService _orderService;
 
 
         public OrderViewController(OrderService orderService)

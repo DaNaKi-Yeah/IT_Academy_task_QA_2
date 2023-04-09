@@ -16,7 +16,7 @@ namespace Recorder.PL.ViewControllers.Implementations
         public delegate void DisplayOrders(IEnumerable<Order> orders);
 
         private readonly DisplayOrders _displayOrders; //maybe incorrect name
-        public readonly ClientService _clientService;
+        private readonly ClientService _clientService;
         
 
         public ClientViewController(ClientService clientService, DisplayOrders displayOrders)
