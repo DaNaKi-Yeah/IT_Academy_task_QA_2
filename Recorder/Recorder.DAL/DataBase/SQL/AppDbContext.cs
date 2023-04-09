@@ -13,7 +13,10 @@ namespace Recorder.DAL.DataBase.SQL
     {
         public AppDbContext()
         {
-
+            //don't touch.
+            //after these lines generate Clients and Orders with their entities
+            Clients.FirstOrDefault();
+            Orders.FirstOrDefault();
         }
 
         public DbSet<Client> Clients { get; set; }
