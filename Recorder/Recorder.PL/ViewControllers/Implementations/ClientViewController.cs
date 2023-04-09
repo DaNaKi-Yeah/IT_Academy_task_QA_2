@@ -66,8 +66,6 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void Add()
         {
-            DisplayAll();
-
             DateTime dateTimeNow = DateTime.Now;
             string firstName, secondName, phoneNumber;
 
@@ -88,8 +86,6 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void EditById()
         {
-            DisplayAll();
-
             Console.WriteLine("\nEditing Client by id\n");
 
             int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
@@ -144,8 +140,6 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void RemoveById()
         {
-            DisplayAll();
-
             Console.WriteLine("\nRemoving Client by id\n");
 
             int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());

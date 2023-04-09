@@ -52,8 +52,6 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void Add(int clientId)
         {
-            DisplayAll();
-
             DateTime dateTimeNow = DateTime.Now;
             DateTime dateTimeAfterDaysFromNow;
             string description;
@@ -77,8 +75,6 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void EditById()
         {
-            DisplayAll();
-
             Console.WriteLine("\nEditing Order by id\n");
 
             int orderId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_orderService.GetAll());
@@ -132,8 +128,6 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         public void RemoveById()
         {
-            DisplayAll();
-
             Console.WriteLine("\nRemoving Order by id\n");
 
             int orderId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_orderService.GetAll());
