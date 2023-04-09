@@ -15,8 +15,8 @@ namespace Recorder.DAL.DataBase.SQL
         {
             //don't touch.
             //after these lines generate Clients and Orders with their entities
-            Clients.FirstOrDefault();
-            Orders.FirstOrDefault();
+            Clients.ToArray();
+            Orders.ToArray();
         }
 
         public DbSet<Client> Clients { get; set; }
