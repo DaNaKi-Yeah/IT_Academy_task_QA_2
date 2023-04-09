@@ -60,7 +60,7 @@ namespace Recorder.PL.ViewControllers.Implementations
             }
             else if (isHaveClientWithThisId)
             {
-                Client client = _clientService.GetAll().First(c => c.ID == clientId);
+                Client client = _clientService.GetById(clientId);
                 ShowClientOrders(client);
             }
         }
