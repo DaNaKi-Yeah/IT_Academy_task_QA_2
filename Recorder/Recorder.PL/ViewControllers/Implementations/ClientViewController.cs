@@ -17,7 +17,7 @@ namespace Recorder.PL.ViewControllers.Implementations
 
         private readonly DisplayOrders _displayOrders; //maybe incorrect name
         private readonly ClientService _clientService;
-        
+
 
         public ClientViewController(ClientService clientService, DisplayOrders displayOrders)
         {
@@ -94,7 +94,7 @@ namespace Recorder.PL.ViewControllers.Implementations
             phoneNumber = Console.ReadLine();
 
 
-            Client newClient = new Client(firstName, secondName, phoneNumber, dateTimeNow) ;
+            Client newClient = new Client(firstName, secondName, phoneNumber, dateTimeNow);
 
             _clientService.Add(newClient);
         }
@@ -159,9 +159,39 @@ namespace Recorder.PL.ViewControllers.Implementations
 
             int clientId = GetClientId();
 
-            _clientService.RemoveById(clientId);
+            Client client = _clientService.GetById(clientId);
+
+            if (client.Orders is not null)
+            {
+                while (true)
+                {
+                    Console.WriteLine($"Client is have orders. ({client.OrderAmount})");
+                    Console.WriteLine("Are you sure about removing? (Y/N)");
+                    string answer = Console.ReadLine();
+
+                    if (answer == "Y")
+                    {
+                        _clientService.RemoveById(clientId);
+                        Console.WriteLine("--- Сlient with orders has been Removed ---");
+                        break;
+                    }
+                    else if (answer == "N")
+                    {
+                        Console.WriteLine("--- Сlient has not been Removed ---");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("### Incorrect answer ###");
+                    }
+                }
+            }
+            else
+            {
+                _clientService.RemoveById(clientId);
+            }
         }
-       
+
         public int GetEntityId()
         {
             return HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
