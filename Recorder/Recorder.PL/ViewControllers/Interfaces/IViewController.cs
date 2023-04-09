@@ -12,5 +12,6 @@ namespace Recorder.PL.ViewControllers.Interfaces
         public void DisplayOne(T item);
         public void EditById();
         public void RemoveById();
+        public int GetEntityId();
     }
 }
