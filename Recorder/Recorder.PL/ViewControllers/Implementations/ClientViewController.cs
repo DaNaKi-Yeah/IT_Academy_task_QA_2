@@ -50,6 +50,21 @@ namespace Recorder.PL.ViewControllers.Implementations
             Console.WriteLine($"Order amount: {client.OrderAmount}");
         }
 
+        public void ShowClientOrders(int clientId)
+        {
+            bool isHaveClientWithThisId = _clientService.GetAll().Any(c => c.ID == clientId);
+
+            if (!isHaveClientWithThisId)
+            {
+                Console.WriteLine("### Incorrect client id ###");
+            }
+            else if (isHaveClientWithThisId)
+            {
+                Client client = _clientService.GetAll().First(c => c.ID == clientId);
+                ShowClientOrders(client);
+            }
+        }
+
         public void ShowClientOrders(Client client)
         {
             var orders = client.Orders;
