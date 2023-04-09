@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder", "Recorder\Recorder.csproj", "{03C7BEC7-B830-4EE4-997D-BB96AC6E511E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recorder", "Recorder\Recorder.csproj", "{03C7BEC7-B830-4EE4-997D-BB96AC6E511E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder.DAL", "Recorder.DAL\Recorder.DAL.csproj", "{ADE16AD0-C746-47F9-B59D-13C6185D4ABA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recorder.DAL", "Recorder.DAL\Recorder.DAL.csproj", "{ADE16AD0-C746-47F9-B59D-13C6185D4ABA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder.BLL", "Recorder.BLL\Recorder.BLL.csproj", "{8E7A5775-2529-4819-853F-D27AF2BDE2DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recorder.BLL", "Recorder.BLL\Recorder.BLL.csproj", "{8E7A5775-2529-4819-853F-D27AF2BDE2DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder.PL", "Recorder.PL\Recorder.PL.csproj", "{C4E16A34-C220-48AF-AE8D-5730F86AD6EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recorder.PL", "Recorder.PL\Recorder.PL.csproj", "{C4E16A34-C220-48AF-AE8D-5730F86AD6EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
