@@ -43,7 +43,7 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             Console.WriteLine("Order");
             Console.WriteLine($"Id: {order.ID}");
-            Console.WriteLine($"Client id: {order.ClientID}");
+            Console.WriteLine($"Client id: {order.ClientID} || Second name: {order.Client.SecondName}");
             Console.WriteLine($"Order added: {order.OrderDate}");
             Console.WriteLine($"Order close: {order.CloseDate}");
             Console.WriteLine($"Price: {order.Price}");
