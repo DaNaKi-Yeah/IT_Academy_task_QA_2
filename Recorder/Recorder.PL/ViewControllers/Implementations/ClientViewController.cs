@@ -88,7 +88,7 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             Console.WriteLine("\nEditing Client by id\n");
 
-            int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
+            int clientId = GetClientId();
 
             Client client = _clientService.GetById(clientId);
             DisplayOne(client);
@@ -142,10 +142,19 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             Console.WriteLine("\nRemoving Client by id\n");
 
-            int clientId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
+            int clientId = GetClientId();
 
             _clientService.RemoveById(clientId);
         }
        
+        public int GetEntityId()
+        {
+            return HelperBaseEnitityViewController.GetIdGivenCurrentList(_clientService.GetAll());
+        }
+
+        private int GetClientId()
+        {
+            return GetEntityId();
+        }
     }
 }

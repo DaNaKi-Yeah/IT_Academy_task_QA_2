@@ -77,7 +77,7 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             Console.WriteLine("\nEditing Order by id\n");
 
-            int orderId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_orderService.GetAll());
+            int orderId = GetOrderId();
 
             Order order = _orderService.GetById(orderId);
             DisplayOne(order);
@@ -130,9 +130,19 @@ namespace Recorder.PL.ViewControllers.Implementations
         {
             Console.WriteLine("\nRemoving Order by id\n");
 
-            int orderId = HelperBaseEnitityViewController.GetIdGivenCurrentList(_orderService.GetAll());
+            int orderId = GetOrderId();
 
             _orderService.RemoveById(orderId);
+        }
+
+        public int GetEntityId()
+        {
+            return HelperBaseEnitityViewController.GetIdGivenCurrentList(_orderService.GetAll());
+        }
+
+        private int GetOrderId()
+        {
+            return GetEntityId();
         }
 
 
