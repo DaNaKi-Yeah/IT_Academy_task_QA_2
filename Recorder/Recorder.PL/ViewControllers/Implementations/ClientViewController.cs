@@ -71,7 +71,7 @@ namespace Recorder.PL.ViewControllers.Implementations
 
             if (orders is null || !orders.Any())
             {
-                Console.WriteLine("No have orders");
+                Console.WriteLine("\n-- No have orders --\n");
             }
             else
             {
