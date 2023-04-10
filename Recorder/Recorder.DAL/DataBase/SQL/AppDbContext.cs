@@ -13,11 +13,10 @@ namespace Recorder.DAL.DataBase.SQL
     {
         public AppDbContext()
         {
-            //don't touch.
-            //after these lines generate Clients and Orders with their entities
-            Clients.ToArray();
-            Orders.ToArray();
+            
         }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Client> Clients { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -35,6 +34,7 @@ namespace Recorder.DAL.DataBase.SQL
                 .GetConnectionString("ConnectionString");
 
             optionsBuilder
+                .UseLazyLoadingProxies()
                 .UseSqlServer(connectionString);
         }
     }
