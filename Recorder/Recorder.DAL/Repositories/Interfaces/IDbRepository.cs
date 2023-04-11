@@ -12,10 +12,10 @@ namespace Recorder.DAL.Repositories.Interfaces
         public Task AddRangeAsync(IEnumerable<T> entities);
         public Task<T> GetByIdAsync(int id);
         public Task<IEnumerable<T>> GetAllAsync();
-        public Task Update(T entity);
-        public Task Remove(T entity);
-        public Task RemoveRange(IEnumerable<T> entities);
-        public Task RemoveById(int id);
+        public Task UpdateAsync(T entity);
+        public Task RemoveAsync(T entity);
+        public Task RemoveRangeAsync(IEnumerable<T> entities);
+        public Task RemoveByIdAsync(int id);
         public Task<int> SaveChangesAsync();
     }
 }
