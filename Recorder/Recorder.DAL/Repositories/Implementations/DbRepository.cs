@@ -50,7 +50,7 @@ namespace Recorder.DAL.Repositories.Implementations
         }
 
         public void Remove(T entity)
-        {/
+        {
             _dbSet.Remove(entity);
             _appDbContext.SaveChanges();
         }
