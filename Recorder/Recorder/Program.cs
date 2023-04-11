@@ -7,6 +7,7 @@ using Recorder.PL.ViewControllers.Interfaces;
 
 using (AppDbContext context = new AppDbContext())
 {
+
     Repository<Order> orderRepository = new Repository<Order>(context); 
     Repository<Client> clientRepository = new Repository<Client>(context);
 

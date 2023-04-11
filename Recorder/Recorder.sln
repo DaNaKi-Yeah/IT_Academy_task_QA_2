@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recorder.BLL", "Recorder.BL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recorder.PL", "Recorder.PL\Recorder.PL.csproj", "{C4E16A34-C220-48AF-AE8D-5730F86AD6EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder.API", "Recorder.API\Recorder.API.csproj", "{455A5365-CA25-4FD6-B586-C3961C77B8FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C4E16A34-C220-48AF-AE8D-5730F86AD6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4E16A34-C220-48AF-AE8D-5730F86AD6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4E16A34-C220-48AF-AE8D-5730F86AD6EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455A5365-CA25-4FD6-B586-C3961C77B8FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455A5365-CA25-4FD6-B586-C3961C77B8FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455A5365-CA25-4FD6-B586-C3961C77B8FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455A5365-CA25-4FD6-B586-C3961C77B8FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
