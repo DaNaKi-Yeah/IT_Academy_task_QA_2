@@ -49,28 +49,34 @@ namespace Recorder.DAL.Repositories.Implementations
             return await _appDbContext.SaveChangesAsync();
         }
 
-        public void Remove(T entity)
+        public async Task RemoveAsync(T entity)
         {
-            _dbSet.Remove(entity);
-            _appDbContext.SaveChanges();
+            await Task.Run(() =>
+            {
+                _dbSet.Remove(entity);
+            });
         }
 
-        public void RemoveById(int id)
+        public async Task RemoveByIdAsync(int id)
         {
             T entity = _dbSet.FirstOrDefault(x => x.ID == id);
-            _dbSet.Remove(entity);
-            _appDbContext.SaveChanges();
+            await RemoveAsync(entity);
         }
 
-        public void RemoveRange(IEnumerable<T> entities)
+        public async Task RemoveRangeAsync(IEnumerable<T> entities)
         {
-            _dbSet.RemoveRange(entities);
+            await Task.Run(() =>
+            {
+                _dbSet.RemoveRange(entities);
+            });
         }
 
-        public void Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            _dbSet.Update(entity);
-            _appDbContext.SaveChanges();
+            await Task.Run(() =>
+            {
+                _dbSet.Update(entity);
+            });
         }
     }
 }
