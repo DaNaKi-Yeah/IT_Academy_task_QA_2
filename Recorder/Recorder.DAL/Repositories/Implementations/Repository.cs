@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace Recorder.DAL.Repositories.Implementations
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly AppDbContext _appDbContext;
-        private readonly DbSet<T> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
 
         public Repository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-            _dbSet = appDbContext.Set<T>();
+            _dbSet = appDbContext.Set<TEntity>();
         }
 
-        public T Add(T entity)
+        public TEntity Add(TEntity entity)
         {
             var addedEntity = _dbSet.Add(entity).Entity;
             int id = addedEntity.ID;
@@ -31,23 +31,23 @@ namespace Recorder.DAL.Repositories.Implementations
             return addedEntity;
         }
 
-        public void AddRange(IEnumerable<T> entities)
+        public void AddRange(IEnumerable<TEntity> entities)
         {
             _dbSet.AddRange(entities);
             _appDbContext.SaveChanges();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return _dbSet.ToList();
         }
 
-        public T GetById(int id)
+        public TEntity GetById(int id)
         {
             return _dbSet.FirstOrDefault(x => x.ID == id);
         }
 
-        public void Remove(T entity)
+        public void Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
             _appDbContext.SaveChanges();
@@ -59,13 +59,13 @@ namespace Recorder.DAL.Repositories.Implementations
 
             if (isHaveClientWithThisId)
             {
-                T entity = _dbSet.FirstOrDefault(e => e.ID == id);
+                TEntity entity = _dbSet.FirstOrDefault(e => e.ID == id);
                 _dbSet.Remove(entity);
                 _appDbContext.SaveChanges();
             }
         }
 
-        public void Update(T entity)
+        public void Update(TEntity entity)
         {
             _dbSet.Update(entity);
             _appDbContext.SaveChanges();
