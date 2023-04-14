@@ -1,51 +1,59 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Recorder.BLL.ApiIntrefaces;
 using Recorder.DAL.Entities.Models;
+using Recorder.DTOs.OrderDTOs;
 
 namespace Recorder.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/order")]
     [ApiController]
     public class OrderController : ControllerBase
     {
-        // GET: api/<OrderController>
+        private readonly IOrderService _orderService;
+
+        public OrderController(IOrderService orderService)
+        {
+            _orderService = orderService;
+        }
+
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Route("get/{id}")]
+        public async Task<GetOrderDTO> GetById(int id)
         {
-            return new string[] { "value1", "value2" };
+            return await _orderService.GetByIdAsync(id);
         }
 
-        // GET api/<OrderController>/5
-        [HttpGet("orders")] // api/order/orders
-        public ActionResult<IEnumerable<Order>> GetAll()
+        [HttpGet]
+        [Route("get/orders")]
+        public async Task<IEnumerable<GetOrderDTO>> GetAll()
         {
-            var orders = new List<Order>()
-            {
-                new Order(1, 100, "deskrip", DateTime.Now, DateTime.Now),
-                new Order(2, 50, "deskrip", DateTime.Now, DateTime.Now),
-                new Order(3, 70, "deskrip", DateTime.Now, DateTime.Now)
-            };
-
-            
-
-            return orders;
+            return await _orderService.GetAllAsync();
         }
 
-        // POST api/<OrderController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("add")]
+        public async Task<OrderDTO> Add([FromBody] AddOrderDTO addOrderDTO)
         {
+            return await _orderService.AddAsync(addOrderDTO);
         }
 
-        // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("update")]
+        public async Task Update([FromBody] OrderDTO orderDTO)
         {
+            await _orderService.UpdateAsync(orderDTO);
         }
 
-        // DELETE api/<OrderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("remove/{id}")]
+        public async Task RemoveById(int id)
         {
+            await _orderService.RemoveByIdAsync(id);
+        }
+
+        [HttpDelete("remove")]
+        public async Task Remove([FromBody] OrderDTO orderDTO)
+        {
+            await _orderService.RemoveAsync(orderDTO);
         }
     }
 }
