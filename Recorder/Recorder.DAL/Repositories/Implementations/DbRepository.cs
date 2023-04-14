@@ -11,35 +11,36 @@ using System.Threading.Tasks;
 
 namespace Recorder.DAL.Repositories.Implementations
 {
-    public class DbRepository<T> : IDbRepository<T> where T : BaseEntity
+    public class DbRepository<TEntity> : IDbRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly AppDbContext _appDbContext;
-        private readonly DbSet<T> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
 
 
         public DbRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-            _dbSet = appDbContext.Set<T>();
+            _dbSet = appDbContext.Set<TEntity>();
         }
 
 
-        public async Task AddAsync(T entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
-            await _dbSet.AddAsync(entity);
+            //он возвращает ордера без нового id
+            return (await _dbSet.AddAsync(entity)).Entity;
         }
 
-        public async Task AddRangeAsync(IEnumerable<T> entities)
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
             await _dbSet.AddRangeAsync(entities);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _dbSet.ToArrayAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
             return await _dbSet.FirstOrDefaultAsync(x => x.ID == id);
         }
@@ -49,7 +50,7 @@ namespace Recorder.DAL.Repositories.Implementations
             return await _appDbContext.SaveChangesAsync();
         }
 
-        public async Task RemoveAsync(T entity)
+        public async Task RemoveAsync(TEntity entity)
         {
             await Task.Run(() =>
             {
@@ -59,11 +60,11 @@ namespace Recorder.DAL.Repositories.Implementations
 
         public async Task RemoveByIdAsync(int id)
         {
-            T entity = _dbSet.FirstOrDefault(x => x.ID == id);
+            TEntity entity = _dbSet.FirstOrDefault(x => x.ID == id);
             await RemoveAsync(entity);
         }
 
-        public async Task RemoveRangeAsync(IEnumerable<T> entities)
+        public async Task RemoveRangeAsync(IEnumerable<TEntity> entities)
         {
             await Task.Run(() =>
             {
@@ -71,7 +72,7 @@ namespace Recorder.DAL.Repositories.Implementations
             });
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task UpdateAsync(TEntity entity)
         {
             await Task.Run(() =>
             {
