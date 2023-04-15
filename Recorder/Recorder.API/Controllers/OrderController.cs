@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Recorder.BLL.ApiIntrefaces;
-using Recorder.DAL.Entities.Models;
 using Recorder.DTOs.OrderDTOs;
 
 namespace Recorder.API.Controllers
