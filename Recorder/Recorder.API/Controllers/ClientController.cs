@@ -24,7 +24,7 @@ namespace Recorder.API.Controllers
             return await _clientService.GetByIdAsync(id);
         }
 
-        [HttpGet("get/orders")]
+        [HttpGet("get/clients")]
         public async Task<IEnumerable<GetClientDTO>> GetAll()
         {
             return await _clientService.GetAllAsync();
