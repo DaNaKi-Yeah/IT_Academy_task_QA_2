@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Recorder.BLL.ApiIntrefaces
 {
-    public interface IClientService:IBaseService<ClientDTO, AddClientDTO, ClientDTO>
+    public interface IClientService:IBaseService<ClientDTO, AddClientDTO, GetClientDTO>
     {
 
     }

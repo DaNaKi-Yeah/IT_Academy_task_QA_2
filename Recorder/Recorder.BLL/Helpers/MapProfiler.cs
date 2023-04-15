@@ -19,8 +19,8 @@ namespace Recorder.BLL.Helpers
             CreateMap<Order, GetOrderDTO>().ForMember(
                 getOrderDTO => getOrderDTO.ClientName, opt => opt.MapFrom(c => $"{c.Client.FirstName} {c.Client.SecondName}"));
 
-            CreateMap<Client, ClientDTO>();
-            CreateMap<Client, ClientDTO>().ForMember(
+            CreateMap<Client, GetClientDTO>();
+            CreateMap<Client, GetClientDTO>().ForMember(
                 clientDTO => clientDTO.OrderAmount, opt => opt.MapFrom(o => o.Orders.Count()));
             CreateMap<Client, AddClientDTO>().ReverseMap();
         }

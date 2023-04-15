@@ -9,7 +9,7 @@ namespace Recorder.BLL.ApiIntrefaces
 {
     public interface IBaseService<TEnitityDTO, TAddEntityDTO, TGetEntityDTO>
     {
-        public Task<TEnitityDTO> AddAsync(TAddEntityDTO orderDTO);
+        public Task<TGetEntityDTO> AddAsync(TAddEntityDTO orderDTO);
         public Task AddRangeAsync(IEnumerable<TAddEntityDTO> orderDTOs);
         public Task<TGetEntityDTO> GetByIdAsync(int id);
         public Task<IEnumerable<TGetEntityDTO>> GetAllAsync();
