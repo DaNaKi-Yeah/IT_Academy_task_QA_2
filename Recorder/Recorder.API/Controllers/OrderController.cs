@@ -29,7 +29,7 @@ namespace Recorder.API.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<OrderDTO> Add([FromBody] AddOrderDTO addOrderDTO)
+        public async Task<GetOrderDTO> Add([FromBody] AddOrderDTO addOrderDTO)
         {
             return await _orderService.AddAsync(addOrderDTO);
         }

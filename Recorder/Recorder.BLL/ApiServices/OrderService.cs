@@ -17,14 +17,14 @@ namespace Recorder.BLL.ApiServices
         public OrderService(IDbRepository<Order> repository, IMapper mapper) : base(repository, mapper) { }
 
 
-        public async Task<OrderDTO> AddAsync(AddOrderDTO orderDTO)
+        public async Task<GetOrderDTO> AddAsync(AddOrderDTO orderDTO)
         {
             Order addOrder = MapToOrder(orderDTO);
 
             Order addedOrder = await _repository.AddAsync(addOrder);
             await _repository.SaveChangesAsync();
 
-            OrderDTO getOrderDTO = MapToOrderDTO(addedOrder);
+            GetOrderDTO getOrderDTO = MapToGetOrderDTO(addedOrder);
 
             return getOrderDTO;
         }
@@ -89,10 +89,6 @@ namespace Recorder.BLL.ApiServices
         private Order MapToOrder(AddOrderDTO orderDTO)
         {
             return _mapper.Map<Order>(orderDTO);
-        }
-        private OrderDTO MapToOrderDTO(Order order)
-        {
-            return _mapper.Map<OrderDTO>(order);
         }
         private GetOrderDTO MapToGetOrderDTO(Order order)
         {
