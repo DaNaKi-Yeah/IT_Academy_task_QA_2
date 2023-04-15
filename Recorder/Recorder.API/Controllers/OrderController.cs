@@ -17,22 +17,19 @@ namespace Recorder.API.Controllers
         }
 
 
-        [HttpGet]
-        [Route("get/{id}")]
+        [HttpGet("get/{id}")]
         public async Task<GetOrderDTO> GetById(int id)
         {
             return await _orderService.GetByIdAsync(id);
         }
 
-        [HttpGet]
-        [Route("get/orders")]
+        [HttpGet("get/orders")]
         public async Task<IEnumerable<GetOrderDTO>> GetAll()
         {
             return await _orderService.GetAllAsync();
         }
 
-        [HttpPost]
-        [Route("add")]
+        [HttpPost("add")]
         public async Task<OrderDTO> Add([FromBody] AddOrderDTO addOrderDTO)
         {
             return await _orderService.AddAsync(addOrderDTO);
