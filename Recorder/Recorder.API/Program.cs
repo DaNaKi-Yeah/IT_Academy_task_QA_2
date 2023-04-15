@@ -20,7 +20,9 @@ string connection = builder.Configuration.GetConnectionString("ConnectionString"
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connection));
 builder.Services.AddScoped(typeof(IDbRepository<>), typeof(DbRepository<>));
 builder.Services.AddAutoMapper(config => config.AddProfile<MapProfiler>());
+
 builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<IClientService, ClientService>();
 
 
 var app = builder.Build();
