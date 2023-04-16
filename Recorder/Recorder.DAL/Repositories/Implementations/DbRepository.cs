@@ -26,7 +26,6 @@ namespace Recorder.DAL.Repositories.Implementations
 
         public async Task<TEntity> AddAsync(TEntity entity)
         {
-            //он возвращает ордера без нового id
             return (await _dbSet.AddAsync(entity)).Entity;
         }
 
